@@ -1,0 +1,6 @@
+torch
+torchvision          # required by transformers' Sam3ImageProcessor
+transformers>=5.0   # Sam3Model/Sam3Processor; check the HF docs if import fails
+accelerate
+pillow
+numpy
