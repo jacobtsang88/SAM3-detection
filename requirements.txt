@@ -4,3 +4,4 @@ transformers>=5.0   # Sam3Model/Sam3Processor; check the HF docs if import fails
 accelerate
 pillow
 numpy
+requests #basically only need for batchtest when pulling images from internet

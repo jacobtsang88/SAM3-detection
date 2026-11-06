@@ -3,7 +3,6 @@ import torch
 from PIL import Image
 
 from transformers import Sam3Model, Sam3Processor
-
 #implementation from HF sam3 docs
 
 def main():
@@ -18,7 +17,7 @@ def main():
     ]
 
     # Different text prompt for each image
-    text_prompts = ["nose", "dial"]
+    text_prompts = ["ears", "dial"]
 
     inputs = processor(images=images, text=text_prompts, return_tensors="pt").to(model.device)
 
@@ -36,5 +35,5 @@ def main():
     print(f"Image 1: {len(results[0]['masks'])} objects found")
     print(f"Image 2: {len(results[1]['masks'])} objects found")
 
-if __name__ == "__main__"():
+if __name__ == "__main__":
     main()
