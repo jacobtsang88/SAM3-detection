@@ -3,9 +3,19 @@ import torch
 from PIL import Image
 
 from transformers import Sam3Model, Sam3Processor
-#implementation from HF sam3 docs
+
+
+#https://stackoverflow.com/questions/26392336/importing-images-from-a-directory-python-to-list-or-dictionary
+from PIL import Image
+import glob
+image_list = []
+for filename in glob.glob('test/*.png'):
+    im = Image.open(filename)
+    image_list.append(im)
+print(image_list)
 
 def main():
+    #implementation from HF sam3 docs
     model = Sam3Model.from_pretrained("facebook/sam3", device_map="auto")
     processor = Sam3Processor.from_pretrained("facebook/sam3")
 
@@ -17,7 +27,7 @@ def main():
     ]
 
     # Different text prompt for each image
-    text_prompts = ["ears", "dial"]
+    text_prompts = ["tent", "white dot"]
 
     inputs = processor(images=images, text=text_prompts, return_tensors="pt").to(model.device)
 
